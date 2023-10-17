@@ -1,0 +1,93 @@
+@import "../variables";
+
+.main {
+  .breadcrumbs {
+
+    font-size: 1em;
+
+    a {
+      border-bottom: 0;
+    }
+
+    a:hover {
+      border-bottom: 0;
+      color: #444;
+    }
+
+    a:focus {
+      border-bottom: 0;
+      color: #444;
+    }
+
+    &_ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &_ul {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    &_ul li {
+      float: left;
+      margin: 0 .5em 0 1em;
+    }
+
+    &_ul a {
+      background: @ccGrayHalf;
+      padding: .2em .2em;
+      float: left;
+      text-decoration: none;
+      color: #444;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+      position: relative;
+    }
+
+    &_ul a:hover {
+      background: @ccGray;
+    }
+
+    &_ul a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-width: 1.5em 0 1.5em 1em;
+      border-style: solid;
+      border-color: @ccGrayHalf @ccGrayHalf @ccGrayHalf transparent;
+      left: -1em;
+    }
+
+    &_ul a:hover::before {
+      border-color: @ccGray @ccGray @ccGray transparent;
+    }
+
+    &_ul a::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5em;
+      border-top: 1.5em solid transparent;
+      border-bottom: 1.5em solid transparent;
+      border-left: 1em solid @ccGrayHalf;
+      right: -1em;
+    }
+
+    &_ul a:hover::after {
+      border-left-color: @ccGray;
+    }
+
+    &_ul .current,
+    &_ul .current:hover {
+      font-weight: bold;
+      background: none;
+    }
+
+    &_ul .current::after,
+    &_ul .current::before {
+      content: normal;
+    }
+  }
+}

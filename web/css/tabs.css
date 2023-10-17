@@ -1,0 +1,29 @@
+.main_container.tabs .tabs {
+  display: flex;
+}
+.main_container.tabs .tabs a {
+  border-bottom: 0;
+  color: #222222;
+}
+.main_container.tabs .tabs a:hover {
+  border-bottom: 0;
+}
+.main_container.tabs .tabs a:focus {
+  border-bottom: 0;
+}
+.main_container.tabs .tabs_item {
+  border-top: 1px solid #C6C8C8;
+  border-left: 1px solid #C6C8C8;
+  border-right: 1px solid #C6C8C8;
+  border-radius: 3px 3px 0px 0px;
+  padding: 6px 14px;
+  margin-right: 6px;
+  margin-bottom: -1px;
+}
+.main_container.tabs .tabs_item_current {
+  border-bottom: 1px solid #fff;
+  color: #3262A7;
+}
+.main_container.tabs .main_container_page {
+  border-radius: 0px 0px 3px 3px;
+}

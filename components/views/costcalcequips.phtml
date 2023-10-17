@@ -1,0 +1,39 @@
+<?php
+// вывод оборудования
+
+use app\components\Utils;
+
+if ($this->calc->equiphighsum > 0)
+{
+    ?>
+    <tr><td class="cell cell_bold middle bb_left bb_right" colspan="7" style="border-top: 0;">Оборудование</td></tr>
+    <?php
+}
+
+foreach ($this->equips as $key => $equip)
+{
+    $this->renderRow([
+        'idx'           => ++$key,
+        'name'          => $equip->equip->name,
+        'note'          => $equip->note,
+        'pricehigh'     => Utils::formatBaseToFormatMoney($equip->pricehigh),
+        'pricehighsum'  => Utils::formatBaseToFormatMoney($equip->pricehighsum),
+        'quant'         => Utils::formatBaseToFormatMoney($equip->quant)
+    ]);
+    ?>
+    <?php
+}
+?>
+
+<?php
+    if ($this->calc->equiphighsum > 0)
+    {
+    ?>
+    <tr>
+        <td class="cell bb_left"></td>
+        <td class="cell" colspan="2"></td>
+        <td class="cell cell_bold right" colspan="3">Итого оборудование:</td>
+        <td class="cell middle bb_right" ><?= Utils::formatBaseToFormatMoney($this->calc->equiphighsum); ?></td>
+    </tr>
+<?php
+}

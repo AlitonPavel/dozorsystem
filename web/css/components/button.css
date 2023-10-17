@@ -1,0 +1,22 @@
+.main .button,
+.report .button {
+  padding: 4px 12px;
+}
+.main .button_a,
+.report .button_a {
+  display: block;
+  float: left;
+  border-bottom: 0;
+}
+.main .button_a button,
+.report .button_a button {
+  cursor: pointer;
+}
+.main .button_a:hover,
+.report .button_a:hover {
+  border-bottom: 0;
+}
+.main .button_a:focus,
+.report .button_a:focus {
+  border-bottom: 0;
+}

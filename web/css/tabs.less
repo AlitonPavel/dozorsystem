@@ -1,0 +1,41 @@
+@import "variables";
+
+.main_container.tabs
+{
+  .tabs {
+    display: flex;
+    //border-bottom: 1px solid @ccGray;
+
+    a {
+      border-bottom: 0;
+      color: @ccGraphite;
+    }
+    a:hover {
+      border-bottom: 0;
+    }
+    a:focus {
+      border-bottom: 0;
+    }
+
+    &_item {
+      border-top: 1px solid @ccGray;
+      border-left: 1px solid @ccGray;
+      border-right: 1px solid @ccGray;
+      border-radius: 3px 3px 0px 0px;
+      padding: 6px 14px;
+
+      margin-right: 6px;
+      margin-bottom: -1px;
+
+      &_current {
+        border-bottom: 1px solid #fff;
+        color: @ccBlueDark;
+      }
+    }
+  }
+
+  .main_container_page {
+    //border-top: 0;
+    border-radius: 0px 0px 3px 3px;
+  }
+}

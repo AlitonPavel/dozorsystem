@@ -1,0 +1,22 @@
+@import "../variables";
+
+.date {
+  &_label {
+    display: block;
+  }
+  &_input::-ms-clear {
+    display: none;
+    width : 0;
+    height: 0;
+  }
+  &_input::-ms-reveal {
+    display: none;
+    width : 0;
+    height: 0;
+  }
+
+  .input_error {
+    color: @ccRed;
+    font-size: 0.9em;
+  }
+}

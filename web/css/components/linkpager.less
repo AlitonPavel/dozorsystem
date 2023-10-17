@@ -1,0 +1,28 @@
+@import "../variables";
+
+.linkpager {
+  border-left: 1px solid @ccGray;
+  border-bottom: 1px solid @ccGray;
+  border-right: 1px solid @ccGray;
+  .pagination {
+    padding-left: 1em;
+  }
+  ul {
+    margin: 0;
+    display: flex;
+    li {
+      list-style-type: none;
+      padding: 4px;
+    }
+  }
+  .all {
+    color: @ccGreenDark;
+  }
+  .active {
+
+    a {
+      background-color: @ccGreen;
+      color: @ccWhite;
+    }
+  }
+}

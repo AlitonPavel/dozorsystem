@@ -1,0 +1,33 @@
+@import "../variables";
+
+.datetime {
+  &_label {
+    display: block;
+  }
+
+  &_input {
+    &_time {
+      font-family: @ccFontFamily;
+    }
+    &_time::-webkit-clear-button {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    &_time::-ms-clear {  display: none; width : 0; height: 0; }
+    &_time::-ms-reveal {  display: none; width : 0; height: 0; }
+    &_time::-webkit-search-decoration,
+    &_time::-webkit-search-cancel-button,
+    &_time::-webkit-search-results-button,
+    &_time::-webkit-search-results-decoration {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .input_error {
+    color: @ccRed;
+    font-size: 0.9em;
+  }
+}

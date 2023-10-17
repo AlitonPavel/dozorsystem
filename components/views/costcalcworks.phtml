@@ -1,0 +1,79 @@
+<?php
+
+use app\components\Utils;
+
+$calc = $this->calc;
+
+$sum = (int)$calc->workhighsum + (int)$calc->starthighsum + (int)$calc->farehighsum + (int)$this->projecthighsum;
+
+if ($sum > 0)
+{
+    ?>
+    <tr><td class="cell cell_bold middle bb_right bb_left" colspan="7">Работы</td></tr>
+    <?php
+}
+
+$i = 1;
+
+if ($calc->workhighsum > 0) {
+    ?>
+    <tr>
+        <td class="cell bb_left middle"><?= $i ?></td>
+        <td class="cell" colspan="2">Монтажные работы</td>
+        <td class="cell middle"><?= Utils::formatBaseToFormatMoney($calc->workhighsum) ?></td>
+        <td class="cell middle">1</td>
+        <td class="cell"></td>
+        <td class="cell middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->workhighsum) ?></td>
+    </tr>
+    <?php
+    $i++;
+}
+if ($calc->starthighsum > 0) {
+    ?>
+    <tr>
+        <td class="cell bb_left middle"><?= $i ?></td>
+        <td class="cell" colspan="2">Пуско-наладочные работы</td>
+        <td class="cell middle"><?= Utils::formatBaseToFormatMoney($calc->starthighsum) ?></td>
+        <td class="cell middle">1</td>
+        <td class="cell"></td>
+        <td class="cell middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->starthighsum) ?></td>
+    </tr>
+    <?php
+    $i++;
+}
+if ($calc->farehighsum > 0) {
+    ?>
+    <tr>
+        <td class="cell bb_left middle"><?= $i ?></td>
+        <td class="cell" colspan="2">Транспортные расходы</td>
+        <td class="cell middle"><?= Utils::formatBaseToFormatMoney($calc->farehighsum) ?></td>
+        <td class="cell middle">1</td>
+        <td class="cell"></td>
+        <td class="cell middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->farehighsum) ?></td>
+    </tr>
+    <?php
+    $i++;
+}
+if ($calc->projecthighsum > 0) {
+    ?>
+    <tr>
+        <td class="cell bb_left middle"><?= $i ?></td>
+        <td class="cell" colspan="2">Проектная документация</td>
+        <td class="cell middle"><?= Utils::formatBaseToFormatMoney($calc->projecthighsum) ?></td>
+        <td class="cell middle">1</td>
+        <td class="cell"></td>
+        <td class="cell middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->projecthighsum) ?></td>
+    </tr>
+    <?php
+}
+
+if ($sum > 0) {
+    ?>
+    <tr>
+        <td class="cell bb_left"></td>
+        <td class="cell" colspan="2"></td>
+        <td class="cell cell_bold right" colspan="3">Итого работы:</td>
+        <td class="cell middle bb_right" ><?= Utils::formatBaseToFormatMoney($sum); ?></td>
+    </tr>
+    <?php
+}

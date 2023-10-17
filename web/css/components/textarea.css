@@ -1,0 +1,10 @@
+.textarea {
+  padding-right: 6px;
+}
+.textarea_label {
+  display: block;
+}
+.textarea_text {
+  font-family: Arial, 'Droid Sans', Helvetica, sans-serif;
+  font-size: 15px;
+}

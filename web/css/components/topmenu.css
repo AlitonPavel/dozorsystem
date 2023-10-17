@@ -1,0 +1,52 @@
+.main .components_topmenu a {
+  display: block;
+  color: #fff;
+  padding: 0.2em 1em 0.2em 1em;
+  border-bottom: 0;
+}
+.main .components_topmenu a:hover {
+  color: #fff;
+  border-bottom: 0;
+}
+.main .components_topmenu a:focus {
+  color: #fff;
+  border-bottom: 0;
+}
+.main .components_topmenu ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color: #b1403e;
+  z-index: 99;
+}
+.main .components_topmenu ul li {
+  list-style-type: none;
+  color: #fff;
+  position: relative;
+}
+.main .components_topmenu ul li:hover {
+  background-color: #854644;
+}
+.main .components_topmenu ul li:hover ul {
+  display: block;
+}
+@media (max-width: 320px) {
+  .main .components_topmenu ul li:target {
+    background-color: #854644;
+  }
+  .main .components_topmenu ul li:target ul {
+    display: block;
+  }
+}
+.main .components_topmenu ul li:active {
+  background-color: #731714;
+}
+.main .components_topmenu ul ul {
+  display: none;
+  position: absolute;
+  top: 22px;
+  width: 220px;
+}
+.main .components_topmenu_red {
+  color: #000 !important;
+}

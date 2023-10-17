@@ -1,0 +1,23 @@
+.linkpager {
+  border-left: 1px solid #C6C8C8;
+  border-bottom: 1px solid #C6C8C8;
+  border-right: 1px solid #C6C8C8;
+}
+.linkpager .pagination {
+  padding-left: 1em;
+}
+.linkpager ul {
+  margin: 0;
+  display: flex;
+}
+.linkpager ul li {
+  list-style-type: none;
+  padding: 4px;
+}
+.linkpager .all {
+  color: #09885F;
+}
+.linkpager .active a {
+  background-color: #0AA473;
+  color: #fff;
+}

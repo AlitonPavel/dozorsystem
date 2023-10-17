@@ -1,0 +1,100 @@
+<?php
+
+/** @var \app\components\CostCalcRender $this */
+
+/** @var \app\models\CostCalc $calc */
+$calc = $this->calc;
+
+Yii::$app->view->registerCssFile('@web/css/components/render.css');
+
+use app\components\Utils;
+
+?>
+
+<table class="render" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td class="" colspan="7"><img src="/web/css/images/logo.png" style="height: 56px; width: 320px;"></td>
+        </tr>
+        <tr>
+            <td class="" colspan="7" style="height: 20px"></td>
+        </tr>
+        <tr>
+            <td class="middle cell_bold cell_header" colspan="7"><?= $calc->getTypeName(); ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cell cell_bold bb_left_top right italic">На выполнение работ:</td>
+            <td colspan="5" class="cell middle bb_right_top italic"><?= $calc->name ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cell cell_bold bb_left right italic">Адрес объекта:</td>
+            <td colspan="5" class="cell middle bb_right italic"><?= isset($calc->object) ? $calc->object->getAddress() : ''; ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cell cell_bold bb_left right italic">Наименование заказчика:</td>
+            <td colspan="5" class="cell middle bb_right italic"><?= $calc->client->name ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cell cell_bold bb_left right italic">Контактное лицо:</td>
+            <td colspan="5" class="cell middle bb_right italic"><?= $calc->contactFIO ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="cell cell_bold bb_left_bottom right italic">Телефон:</td>
+            <td colspan="5" class="cell middle bb_right_bottom italic"><?= $calc->contact ?></td>
+        </tr>
+        <tr>
+            <td colspan="7" style="height: 20px"></td>
+        </tr>
+        <tr>
+            <td class="cell cell_bold middle cell_header bb_left_top bb_bottom">№</td>
+            <td class="cell cell_bold middle cell_header bb_top bb_bottom">Наименование оборудования и выполняемых работ</td>
+            <td class="cell cell_bold middle cell_header bb_top bb_bottom">Примечание</td>
+            <td class="cell cell_bold middle cell_header bb_top bb_bottom">Цена за единицу (руб.)</td>
+            <td class="cell cell_bold middle cell_header bb_top bb_bottom">Кол-во</td>
+            <td class="cell cell_bold middle cell_header bb_top bb_bottom">Ед. изм.</td>
+            <td class="cell cell_bold middle cell_header bb_right_top bb_bottom">Стоимость</td>
+        </tr>
+
+        <?= $this->renderEquips(); ?>
+        <?= $this->renderWorks(); ?>
+
+        <?php
+            if ($calc->discount > 0) {
+        ?>
+                <tr>
+                    <td class="cell bb_left"></td>
+                    <td class="cell" colspan="2"></td>
+                    <td class="cell cell_bold right" colspan="3">Cумма договора без скидки:</td>
+                    <td class="cell cell_bold middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->withoutdiscountsum); ?></td>
+                </tr>
+                <tr>
+                    <td class="cell bb_left"></td>
+                    <td class="cell" colspan="2"></td>
+                    <td class="cell cell_bold right" colspan="3">Скидка:</td>
+                    <td class="cell cell_bold middle bb_right"><?= Utils::formatBaseToFormatMoney($calc->discount); ?></td>
+                </tr>
+                <tr>
+                    <td class="cell bb_left bb_bottom"></td>
+                    <td class="cell bb_bottom" colspan="2"></td>
+                    <td class="cell cell_bold bb_bottom right" colspan="3">Итого сумма договора:</td>
+                    <td class="cell cell_bold middle bb_right bb_bottom"><?= Utils::formatBaseToFormatMoney($calc->highsum); ?></td>
+                </tr>
+        <?php } else { ?>
+        <tr>
+            <td class="cell bb_left bb_bottom"></td>
+            <td class="cell bb_bottom" colspan="2"></td>
+            <td class="cell cell_bold bb_bottom right" colspan="3">Итого сумма договора:</td>
+            <td class="cell cell_bold middle bb_right bb_bottom"><?= Utils::formatBaseToFormatMoney($calc->highsum); ?></td>
+        </tr>
+        <?php } ?>
+
+        <?php if (!empty($calc->note)) { ?>
+            <tr>
+                <td class="cell" colspan="7" style="height: 20px; border: 0"></td>
+            </tr>
+            <tr>
+                <td class="cell bb_left_top bb_right_bottom" colspan="7"><?= $calc->note ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>

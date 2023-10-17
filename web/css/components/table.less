@@ -1,0 +1,75 @@
+@import "../variables";
+
+.table {
+  border-top: 1px solid @ccGray;
+  border-left: 1px solid @ccGray;
+  border-right: 1px solid @ccGray;
+
+  width: 100%;
+  thead {
+    background-color: @ccGrayHalf;
+    tr {
+      td {
+
+      }
+    }
+  }
+  .aggregates {
+    background-color: @ccGrayHalf;
+  }
+  tr {
+    td {
+      padding: 4px;
+      border-left: 1px solid @ccGray;
+      border-bottom: 1px solid @ccGray;
+
+      a {
+
+      }
+    }
+    td:first-child {
+      border-left: 0;
+    }
+  }
+  &_filters {
+    &_filter {
+      input {
+        width: calc(100% - 4px);
+      }
+    }
+  }
+  .current {
+    td {
+      background-color: @ccGrayLight;
+    }
+  }
+  &_action {
+    padding: 0px 4px;
+  }
+  &_icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('/web/images/sprites.png') !important;
+    background-repeat: no-repeat !important;
+  }
+  &_icon_edit {
+    background-position: 0 -224px !important;
+  }
+  &_icon_del {
+    background-position: 0 -208px !important;
+  }
+  &_icon_ins {
+    background-position: 0 -512px !important;
+  }
+
+  .row_red {
+    td {
+      color: @ccPrior1;
+
+      a {
+        color: @ccPrior1;
+        border-color: @ccPrior1;
+      }
+    }
+  }
+}

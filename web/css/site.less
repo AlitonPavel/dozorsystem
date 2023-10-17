@@ -1,0 +1,167 @@
+@import "variables";
+
+body {
+  margin: 0;
+}
+
+.main,.report {
+
+  a {
+    text-decoration: none;
+    color: @ccBlue;
+    border-bottom: 1px dashed @ccBlue;
+  }
+
+  a:focus {
+    color: @ccBlack;
+    border-bottom: 1px solid @ccBlack;
+  }
+  a:hover {
+    color: @ccBlueDark;
+    border-bottom: 1px solid @ccBlueDark;
+  }
+
+  font-family: @ccFontFamily;
+  font-size: @ccFontSize;
+
+  &_container {
+    margin: 0 auto;
+    width: 1024px;
+    min-height: 400px;
+    overflow: hidden;
+    margin-top: 8px;
+
+    &_logo {
+      height: 56px;
+      width: 100%;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      a {
+        text-decoration: none;
+        border: 0;
+      }
+
+      a:focus {
+        border: 0;
+      }
+      a:hover {
+        border: 0;
+      }
+
+      &_right {
+        width: 100%;
+      }
+
+      @media (max-width: 1024px) {
+        &_right {
+          display: none;
+        }
+      }
+
+      &_left {
+        a {
+          height: 56px;
+          width: 320px;
+          display: block;
+          background-image: url("/web/css/images/logo.png");
+          background-size: cover;
+        }
+      }
+    }
+
+    &_menu {
+      width: 100%;
+      margin-bottom: 18px;
+    }
+
+    &_title {
+      margin-bottom: 1em;
+      font-size: 1.8em;
+      font-weight: bold;
+      text-align: center;
+
+      @media (max-width: @ccWidthMedium) {
+        font-size: 1.5em;
+      }
+    }
+
+    &_breadcrumbds {
+      margin-bottom: 10px;
+    }
+
+    &_page {
+      overflow: hidden;
+      border: 1px solid @ccGray;
+      border-radius: 3px;
+      padding: 10px 20px 20px 20px;
+    }
+
+    @media (max-width: @ccWidthMedium) {
+      width: ~'calc(100% - 16px)';
+      margin: 0;
+      padding: 8px 8px 0px 8px;
+      min-width: 304px;
+    }
+  }
+
+  input {
+    font-size: 1em;
+  }
+
+  .control-label {
+    min-width: 200px;
+  }
+
+  .index_menu {
+    li {
+      padding: 8px;
+    }
+  }
+  .grid {
+    .row {
+      margin-bottom: 6px;
+      .column {
+        margin-right: 6px;
+        float: left;
+      }
+      .column:last-child {
+        margin-right: 0px;
+      }
+    }
+    .row:after {
+      content: '.';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .row:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+  .service_mess {
+    color: @ccRed;
+  }
+
+  .filter_panel {
+    border: 1px solid @ccGray;
+    padding: 10px;
+    background-color: @ccGrayHalf;
+  }
+}
+
+.ui-widget {
+  font-family: @ccFontFamily;
+  font-size: @ccFontSize;
+}
+
+.ui-state-active {
+  border: 1px solid @ccBlueDark !important;
+  background: @ccBlue !important;
+  font-weight: normal;
+  color: @ccWhite;
+}

@@ -1,0 +1,52 @@
+.render {
+  width: 1024px;
+}
+.render .middle {
+  text-align: center;
+}
+.render .right {
+  text-align: right;
+}
+.render .cell {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  padding: 2px;
+}
+.render .italic {
+  font-style: italic;
+}
+.render .cell_bold {
+  font-weight: bold;
+}
+.render .cell_header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.render .bb_top {
+  border-top: 2px solid black;
+}
+.render .bb_bottom {
+  border-bottom: 2px solid black;
+}
+.render .bb_left {
+  border-left: 2px solid black;
+}
+.render .bb_right {
+  border-right: 2px solid black;
+}
+.render .bb_left_top {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+}
+.render .bb_right_top {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+.render .bb_left_bottom {
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+}
+.render .bb_right_bottom {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}

@@ -1,0 +1,17 @@
+.date_label {
+  display: block;
+}
+.date_input::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.date_input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.date .input_error {
+  color: #FA2D46;
+  font-size: 0.9em;
+}
