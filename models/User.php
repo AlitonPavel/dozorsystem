@@ -12,6 +12,7 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     const SCENARIO_UPDATE = 'update';
 
     public $accessToken;
+    public $authKey;
 
     public static function tableName()
     {

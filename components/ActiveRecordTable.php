@@ -44,7 +44,9 @@ class ActiveRecordTable extends Table
             if (!(isset($column['hidden']) && $column['hidden'])) {
                 $this->countColumns++;
             }
-            $this->prepareColumns[$column['fieldname']] = $column;
+            if (isset($column['fieldname'])) {
+                $this->prepareColumns[$column['fieldname']] = $column;
+            }
         }
     }
 
@@ -96,7 +98,7 @@ class ActiveRecordTable extends Table
                     continue;
                 }
 
-                switch ($column['type']) {
+                switch ($column['type'] ?? '') {
                     case self::TYPE_TEXT:
                         $tmpRow[$column['fieldname']] = $row->{$column['fieldname']};
                         break;
@@ -113,7 +115,7 @@ class ActiveRecordTable extends Table
                         $tmpRow[$column['fieldname']] = $column['calc']($row, $preRow);
                         break;
                     case self::TYPE_ACTION:
-                        $tmpRow[$column['fieldname']] = $this->renderActions($row, $column['buttons']);
+                        $tmpRow[$column['fieldname'] ?? ''] = $this->renderActions($row, $column['buttons']);
                         break;
                     default:
                         $tmpRow[$column['fieldname']] = $row->{$column['fieldname']};
