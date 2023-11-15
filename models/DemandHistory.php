@@ -12,6 +12,7 @@ class DemandHistory extends BaseActiveRecord
         Demand::SCENARIO_UPDATE     => 2,
         Demand::SCENARIO_TO_MASTER  => 3,
         Demand::SCENARIO_EXEC       => 4,
+        Demand::SCENARIO_CHANGE_STATUS => 5,
     ];
 
     const actionNames = [
@@ -19,6 +20,7 @@ class DemandHistory extends BaseActiveRecord
         2 => 'Изменение',
         3 => 'Передача местеру',
         4 => 'Выполнение',
+        5 => 'Измененние статуса',
     ];
 
     protected $fields = [
