@@ -9,8 +9,8 @@ use PHPMailer\PHPMailer\Exception;
 class Messanger {
 
     const EMAIL_HOST        = 'ssl://smtp.spaceweb.ru';
-    const EMAIL_USERNAME    = 'info@dozorsystem.ru';
-    const EMAIL_PASSWORD    = '32434trewfd';
+    const EMAIL_USERNAME    = 'base@dozorsystem.ru';
+    const EMAIL_PASSWORD    = 'Base1010';
 
     public static function sendEmail(string $subject, array $recipients, array $files, string $body)
     {
