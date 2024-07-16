@@ -26,6 +26,9 @@ use yii\helpers\Url;
             <b><?= InputText::widget(['id' => 'status', 'caption' => $model->getAttributeLabel('status'), 'value' => $model->getStatusText(), 'readOnly' => true]) ?></b>
         </div>
     </div>
+    <?php if ($model->address && !$model->object) { ?>
+        <div class="row">Адрес: <?= $model->address ?></div>
+    <?php } ?>
     <div class="row">
         <?= $form->createAutoComplete([
             'id' => 'object_id',
@@ -34,7 +37,7 @@ use yii\helpers\Url;
             'width' => '400px',
             'value' => $model->object_id,
             'text' => isset($model->object) ? $model->object->getAddress() : '',
-            'placeholder' => '-начните вводить адрес-'
+            'placeholder' => '-начните вводить адрес-',
         ]); ?>
     </div>
     <div class="row">

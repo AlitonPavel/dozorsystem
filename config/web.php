@@ -30,6 +30,9 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'secret_key',
             'baseUrl' => '',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -81,10 +84,11 @@ $config = [
                 'demand/comment'                                => 'demandview/comment',
                 'object/view'                                   => 'objectview',
                 'object/<action:(contracts)>'                   => 'objectview/<action>',
+                'api/demand'                                   => 'externaldemand/create',
                 'admin/<controller:\w+>/<id:\d+>'               => 'admin/<controller>/update',
                 'admin/<controller:\w+>/<action:\w+>/<id:\d+>'  => 'admin/<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'                 => '<controller>/<action>',
-                '<action:(login|about|contact|logout)>'         => 'site/<action>'
+                '<action:(login|about|contact|logout)>'         => 'site/<action>',
             ],
         ],
 

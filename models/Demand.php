@@ -82,7 +82,7 @@ class Demand extends BaseActiveRecord
     {
         $scenarios = parent::scenarios();
         $allAttributes = ['object_id', 'client_id', 'date', 'creator',
-            'contact', 'type_id', 'prior_id', 'demandtext', 'master', 'deadline', 'report', 'datexec', 'datemaster', 'firstdatemaster', 'status'];
+            'contact', 'type_id', 'prior_id', 'demandtext', 'master', 'deadline', 'report', 'datexec', 'datemaster', 'firstdatemaster', 'status', 'address'];
         $scenarios[self::SCENARIO_CREATE] = $allAttributes;
         $scenarios[self::SCENARIO_UPDATE] = $allAttributes;
         $scenarios[self::SCENARIO_EXEC] = $allAttributes;
@@ -131,8 +131,10 @@ class Demand extends BaseActiveRecord
 
     public function getMessageForToMaster()
     {
+        $address = $this->object ? $this->object->getAddress() : $this->address;
+
         return  "Заявка №" . $this->id .
-            "\nАдрес: " . $this->object->getAddress() .
+            "\nАдрес: " . $address .
             "\nКонтакты: " . $this->creator . " " . $this->contact .
             "\nТекст заявки: " . $this->demandtext;
     }
@@ -258,5 +260,10 @@ class Demand extends BaseActiveRecord
             $this->addError('dateplan', 'Плановая дата должна быть больше или равна текущей дате');
             return false;
         }
+    }
+
+    public function getAddress(): string
+    {
+        return $this->object ? $this->object->getAddress() : $this->address;
     }
 }

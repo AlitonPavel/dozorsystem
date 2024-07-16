@@ -129,7 +129,11 @@ $this->params['breadcrumbs'] = [
             return $html;
         }],
         ['name' => 'Адрес, заявитель и текст заявки', 'fieldname' => 'object', 'type' => ActiveRecordTable::TYPE_CALC, 'filterfield' => 'concat(regions.name, streets.name, objects.house)', 'width' => '400px', 'calc' => function (Demand $row) {
-            $html = '<a href="' . Url::to(['object/view', 'id' => $row->object->id]) . '">' . $row->object->getAddress() . '</a>';
+            if ($row->object) {
+                $html = '<a href="' . Url::to(['object/view', 'id' => $row->object->id]) . '">' . $row->object->getAddress() . '</a>';
+            } else {
+                $html = $row->address;
+            }
             $html .= "<br />" . $row->creator;
             $html .= "<br /><i>" . $row->demandtext . '</i>';
             return $html;
