@@ -102,7 +102,7 @@ class ExternaldemandController extends Controller
                 'date' => (new \DateTimeImmutable())->format(DATE_ATOM),
                 'status' => Demand::STATUS_NEW,
                 'type_id' => 4,
-                'prior_id' => 3,
+                'prior_id' => 2,
                 'master' => 41,
                 'contact' => $request['phone'] ?? $requestData['telephone'] ?? 'Нет номера',
                 'creator' => $request['name'],
