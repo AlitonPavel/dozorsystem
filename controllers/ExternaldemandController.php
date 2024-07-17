@@ -45,10 +45,18 @@ class ExternaldemandController extends Controller
     public function actionCreate()
     {
         try {
+            $errors = [];
+
             $response = \Yii::$app->response;
             $response->format = \yii\web\Response::FORMAT_JSON;
 
             $data = \Yii::$app->getRequest()->getBodyParams();
+
+            $errors = $this->checkData($data);
+            if ($errors !== []) {
+                throw new \Exception("Ошибка");
+            }
+
             $demand = $this->createDemand($data);
 
             if ($demand) {
@@ -64,6 +72,7 @@ class ExternaldemandController extends Controller
             $response->statusCode = 400;
             $response->data = [
                 'success' => false,
+                'errors' => $errors,
             ];
         }
     }
@@ -92,8 +101,8 @@ class ExternaldemandController extends Controller
             [
                 'date' => (new \DateTimeImmutable())->format(DATE_ATOM),
                 'status' => Demand::STATUS_NEW,
-                'type_id' => 1,
-                'prior_id' => 1,
+                'type_id' => 4,
+                'prior_id' => 3,
                 'master' => 41,
                 'contact' => $request['phone'] ?? $requestData['telephone'] ?? 'Нет номера',
                 'creator' => $request['name'],
@@ -106,5 +115,41 @@ class ExternaldemandController extends Controller
             return $demand;
         }
         return false;
+    }
+
+    private function checkData(array $requestData): array
+    {
+        $errors = [];
+        if (!isset($requestData['telephone'])) {
+            $errors[] = [
+                'message' => 'Не передан обязательный параметр "telephone"'
+            ];
+            return $errors;
+        }
+        if (!isset($requestData['request_from'])) {
+            $errors[] = [
+                'message' => 'Не передан обязательный параметр "request_from"'
+            ];
+            return $errors;
+        }
+        if (!isset($requestData['request_from']['subject'])) {
+            $errors[] = [
+                'message' => 'Не передан обязательный параметр "subject"'
+            ];
+            return $errors;
+        }
+        if (!isset($requestData['request_from']['name'])) {
+            $errors[] = [
+                'message' => 'Не передан обязательный параметр "name"'
+            ];
+            return $errors;
+        }
+        if (!isset($requestData['request_from']['address'])) {
+            $errors[] = [
+                'message' => 'Не передан обязательный параметр "address"'
+            ];
+            return $errors;
+        }
+        return $errors;
     }
 }

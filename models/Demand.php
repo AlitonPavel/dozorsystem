@@ -131,10 +131,8 @@ class Demand extends BaseActiveRecord
 
     public function getMessageForToMaster()
     {
-        $address = $this->object ? $this->object->getAddress() : $this->address;
-
         return  "Заявка №" . $this->id .
-            "\nАдрес: " . $address .
+            "\nАдрес: " . $this->getAddress() .
             "\nКонтакты: " . $this->creator . " " . $this->contact .
             "\nТекст заявки: " . $this->demandtext;
     }
