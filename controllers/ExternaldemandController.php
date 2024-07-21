@@ -3,10 +3,10 @@
 namespace app\controllers;
 
 use app\models\Demand;
-use app\models\User;
-use yii\filters\auth\HttpBasicAuth;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\rest\Controller;
+use yii\web\ForbiddenHttpException;
 
 
 class ExternaldemandController extends Controller
@@ -23,15 +23,18 @@ class ExternaldemandController extends Controller
                 'application/json' => \yii\web\Response::FORMAT_JSON,
             ]
         ];
-        $behaviors['basicAuth'] = [
-            'class' => HttpBasicAuth::class,
-            'auth' => function ($username, $password) {
-                if ($this->validate($username, $password)) {
-                    $user = User::findOne(['login' => 'tomoru']);
-                    return $user;
-                }
-                return null;
-            },
+        $behaviors['access'] = [
+            'class' => AccessControl::class,
+            'only'  => ['create'],
+            'rules' => [
+                [
+                    'allow' => true,
+                    'ips' => ['127.0.0.1', '104.155.28.6'],
+                ],
+            ],
+            'denyCallback' => function ($rule, $action) {
+                throw new ForbiddenHttpException('You are not allowed to access this page');
+            }
         ];
         $behaviors['verbs'] = [
             'class' => VerbFilter::class,
