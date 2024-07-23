@@ -92,7 +92,7 @@ class ExternaldemandController extends Controller
     {
         $demand = new Demand();
 
-        $request = $requestData['request_from'];
+        $request = $requestData['request_form'];
 
         $demandText = $request['subject'];
         $demandText .= $request['additional_info'] ? "Информация: " . $request['additional_info'] : '';
@@ -129,25 +129,25 @@ class ExternaldemandController extends Controller
             ];
             return $errors;
         }
-        if (!isset($requestData['request_from'])) {
+        if (!isset($requestData['request_form'])) {
             $errors[] = [
-                'message' => 'Не передан обязательный параметр "request_from"'
+                'message' => 'Не передан обязательный параметр "request_form"'
             ];
             return $errors;
         }
-        if (!isset($requestData['request_from']['subject'])) {
+        if (!isset($requestData['request_form']['subject'])) {
             $errors[] = [
                 'message' => 'Не передан обязательный параметр "subject"'
             ];
             return $errors;
         }
-        if (!isset($requestData['request_from']['name'])) {
+        if (!isset($requestData['request_form']['name'])) {
             $errors[] = [
                 'message' => 'Не передан обязательный параметр "name"'
             ];
             return $errors;
         }
-        if (!isset($requestData['request_from']['address'])) {
+        if (!isset($requestData['request_form']['address'])) {
             $errors[] = [
                 'message' => 'Не передан обязательный параметр "address"'
             ];
