@@ -97,6 +97,9 @@ class ExternaldemandController extends Controller
         $demandText = $request['subject'];
         $demandText .= $request['additional_info'] ? "Информация: " . $request['additional_info'] : '';
         $demandText .= $requestData['last_phrase'] ? "Последний комментарий: " . $requestData['last_phrase'] : '';
+        $phone = $request['phone'];
+
+        $contact = $requestData['telephone'] . (empty($phone) ? '' : ' Телефон для связи: ' . $phone );
 
         $demand->setScenario(Demand::SCENARIO_CREATE);
 
@@ -107,7 +110,7 @@ class ExternaldemandController extends Controller
                 'type_id' => 4,
                 'prior_id' => 2,
                 'master' => 41,
-                'contact' => $request['phone'] ?? $requestData['telephone'] ?? 'Нет номера',
+                'contact' => $contact,
                 'creator' => $request['name'],
                 'demandtext' => $demandText,
                 'address' => $request['address'],
